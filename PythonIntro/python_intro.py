@@ -1,13 +1,14 @@
 # python_intro.py
 """Python Essentials: Introduction to Python.
-<Name>
-<Class>
-<Date>
+<Name> Benjamin McElroy
+<Class> MTH 420 Modern Methods Applied Math 
+<Date> Friday, April 11th. 
 """
 
 
 # Problem 1 (write code below)
-
+if __name__ == "__main__":
+    print("Hello, world!") # Indent with four spaces (NOT a tab).
 
 # Problem 2
 def sphere_volume(r):
