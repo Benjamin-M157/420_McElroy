@@ -53,7 +53,9 @@ def first_half(my_string):
         >>> first_half("ipython")
         'ipy'
     """
-    raise NotImplementedError("Problem 4 Incomplete")
+    return my_string[:len(my_string) // 2]
+    
+    
 
 def backward(my_string):
     """ Return the reverse of the string 'my_string'.
@@ -64,7 +66,15 @@ def backward(my_string):
         >>> backward("ipython")
         'nohtypi'
     """
-    raise NotImplementedError("Problem 4 Incomplete")
+    return my_string[::-1]
+if __name__ == "__main__":
+    text = "Python"
+    print("First half:", first_half(text))   
+    print("Backward:", backward(text))       
+    
+    
+    
+    
 
 
 # Problem 5
@@ -83,7 +93,20 @@ def list_ops():
         >>> list_ops()
         ['fox', 'hawk', 'dog', 'bearhunter']
     """
-    raise NotImplementedError("Problem 5 Incomplete")
+    animals = ["bear", "ant", "cat", "dog"]
+    animals.append("eagle")                      
+    animals[2] = "fox"                           
+    animals.pop(1)                               
+    animals.sort(reverse=True)                   
+    eagle_index = animals.index("eagle")
+    animals[eagle_index] = "hawk"                
+    animals[-1] += "hunter"                      
+    return animals
+if __name__ == "__main__":
+    result = list_ops()
+    print(result)
+
+    
 
 
 # Problem 6
@@ -96,19 +119,43 @@ def pig_latin(word):
         >>> pig_latin("banana")
         'ananabay'
     """
-    raise NotImplementedError("Problem 6 Incomplete")
+    vowels = "aeiouAEIOU"
+    if word[0] in vowels:
+        return word + "hay"
+    else:
+        return word[1:] + word[0] + "ay"
+if __name__ == "__main__":
+    print(pig_latin("apple"))  
+    print(pig_latin("banana")) 
 
+    
 
 # Problem 7
 def palindrome():
     """ Find and retun the largest panindromic number made from the product
     of two 3-digit numbers.
     """
-    raise NotImplementedError("Problem 7 Incomplete")
+    max_palindrome = 0
+    for i in range(999, 99, -1):
+        for j in range(i, 99, -1):  
+            product = i * j
+            if str(product) == str(product)[::-1] and product > max_palindrome:
+                max_palindrome = product
+    return max_palindrome
+if __name__ == "__main__":
+    result = palindrome()
+    print("The largest palindrome made from the product of two 3-digit numbers is:", result)
+
+    
 
 # Problem 8
 def alt_harmonic(n):
     """ Return the partial sum of the first n terms of the alternating
     harmonic series, which approximates ln(2).
     """
-    raise NotImplementedError("Problem 8 Incomplete")
+    return sum([(-1) ** (k + 1) / k for k in range(1, n + 1)])
+if __name__ == "__main__":
+    approx_ln2 = alt_harmonic(500_000)
+    print(f"Approximation of ln(2) with 500,000 terms: {approx_ln2}")
+
+   
