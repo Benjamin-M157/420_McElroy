@@ -1,7 +1,7 @@
 # standard_library.py
 """Python Essentials: The Standard Library.
-<Name>
-<Class>
+<Name> Benjamin McElroy
+<Class> MTH 420 Modern Methods Applied Math
 <Date>
 """
 
@@ -13,7 +13,13 @@ def prob1(L):
     """Return the minimum, maximum, and average of the entries of L
     (in that order, separated by a comma).
     """
-    raise NotImplementedError("Problem 1 Incomplete")
+    return min(L), max(L), sum(L) / len(L)
+if __name__ == "__main__":
+    sample_list = [3, 7, 2, 9, 5]
+    result = prob1(sample_list)
+    print(f"Min: {result[0]}, Max: {result[1]}, Avg: {result[2]}")
+
+   
 
 
 # Problem 2
