@@ -15,7 +15,17 @@ def sphere_volume(r):
     """ Return the volume of the sphere of radius 'r'.
     Use 3.14159 for pi in your computation.
     """
-    raise NotImplementedError("Problem 2 Incomplete")
+    pi = 3.14159
+    volume = (4 / 3) * pi * (r ** 3)
+    return volume
+
+if __name__ == "__main__":
+   
+    test_radius = 5
+    result = sphere_volume(test_radius)
+    print(f"The volume of a sphere with radius {test_radius} is {result}")
+    
+    
 
 
 # Problem 3
@@ -23,7 +33,13 @@ def isolate(a, b, c, d, e):
     """ Print the arguments separated by spaces, but print 5 spaces on either
     side of b.
     """
-    raise NotImplementedError("Problem 3 Incomplete")
+    print(a, b, c, sep='     ', end=' ')
+    print(d, e)
+if __name__ == "__main__":
+    isolate("a", "b", "c", "d", "f")
+
+    
+    
 
 
 # Problem 4
