@@ -2,7 +2,7 @@
 """Python Essentials: The Standard Library.
 <Name> Benjamin McElroy
 <Class> MTH 420 Modern Methods Applied Math
-<Date>
+<Date> April 17th
 """
 
 from math import sqrt
