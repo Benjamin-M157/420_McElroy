@@ -170,7 +170,7 @@ if __name__ == "__main__":
 
 def prob7():
     """ Given the array stored in grid.npy, return the greatest product of four
-    adjacent numbers in the same direction (up, down, left, right, or
+    adjacent numbers in the same direction (up, down, left, right or
     diagonally) in the grid. Use slicing, as specified in the manual.
     """
     raise NotImplementedError("Problem 7 Incomplete")
