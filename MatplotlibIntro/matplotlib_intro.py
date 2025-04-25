@@ -1,8 +1,8 @@
 # matplotlib_intro.py
 """Python Essentials: Intro to Matplotlib.
-<Name>
-<Class>
-<Date>
+<Name> Benjamin McElroy
+<Class> MATH 420 Modern Methods Applied Math
+<Date> April 25th 
 """
 
 import numpy as np
