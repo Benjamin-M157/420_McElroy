@@ -69,6 +69,7 @@ if __name__ == "__main__":
 
 # Problem 3
 import calculator 
+
 def hypot(a, b):
     """Calculate and return the length of the hypotenuse of a right triangle.
     Do not use any functions other than sum(), product() and sqrt() that are
