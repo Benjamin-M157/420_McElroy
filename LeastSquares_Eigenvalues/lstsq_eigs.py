@@ -1,8 +1,8 @@
 # lstsq_eigs.py
 """Volume 1: Least Squares and Computing Eigenvalues.
-<Name>
-<Class>
-<Date>
+<Name> Benjamin McElroy
+<Class> MATH 420 Modern Methods Applied Math
+<Date> Thursday May 8th 
 """
 
 import numpy as np
@@ -23,7 +23,22 @@ def least_squares(A, b):
     Returns:
         x ((n, ) ndarray): The solution to the normal equations.
     """
-    raise NotImplementedError("Problem 1 Incomplete")
+    Q, R = np.linalg.qr(A, mode='reduced')  
+    
+   
+    Qt_b = Q.T @ b
+    x = np.linalg.solve(R, Qt_b)
+    
+    return x
+    # Example 
+if __name__ == "__main__":
+    A = np.array([[1, 1], [1, 2], [1, 3]])
+    b = np.array([1, 2, 2])
+    x = least_squares(A, b)
+    print("Solution x:", x)
+
+    
+    
 
 # Problem 2
 def line_fit():
@@ -31,7 +46,29 @@ def line_fit():
     index for the data in housing.npy. Plot both the data points and the least
     squares line.
     """
-    raise NotImplementedError("Problem 2 Incomplete")
+    
+    data = np.load("housing.npy")  
+    years = data[:, 0]
+    index = data[:, 1]
+
+    A = np.column_stack((np.ones_like(years), years))  # shape (n, 2)
+    b = index
+
+    coeffs = np.linalg.lstsq(A, b, rcond=None)[0]
+    intercept, slope = coeffs
+
+    fitted = intercept + slope * years
+
+    plt.figure(figsize=(8, 5))
+    plt.plot(years, index, 'bo', label="Data")
+    plt.plot(years, fitted, 'r-', label="Least Squares Fit")
+    plt.xlabel("Years since 2000")
+    plt.ylabel("Housing Price Index")
+    plt.title("Least Squares Fit to Housing Price Index")
+    plt.legend()
+    plt.grid(True)
+    plt.show()
+
 
 
 # Problem 3
@@ -40,9 +77,44 @@ def polynomial_fit():
     the year to the housing price index for the data in housing.npy. Plot both
     the data points and the least squares polynomials in individual subplots.
     """
-    raise NotImplementedError("Problem 3 Incomplete")
+    data = np.load("housing.npy")
+    x = data[:, 0]  # years since 2000
+    y = data[:, 1]  # housing price index
 
+    # Degrees to fit
+    degrees = [3, 6, 9, 12]
 
+    # Refined domain for smooth plotting
+    x_plot = np.linspace(x.min(), x.max(), 500)
+
+    # Set up subplots
+    fig, axs = plt.subplots(2, 2, figsize=(12, 8))
+    axs = axs.flatten()
+
+    for i, deg in enumerate(degrees):
+        # Construct Vandermonde matrix
+        A = np.vander(x, deg + 1)  # shape (m, deg+1)
+        
+        # Least squares fit using scipy
+        coeffs, _, _, _ = lstsq(A, y)
+
+        # Evaluate the polynomial on refined domain
+        A_plot = np.vander(x_plot, deg + 1)
+        y_plot = A_plot @ coeffs
+
+        # Plotting
+        axs[i].plot(x, y, 'bo', label="Data")
+        axs[i].plot(x_plot, y_plot, 'r-', label=f"Degree {deg}")
+        axs[i].set_title(f"Degree {deg} Polynomial Fit")
+        axs[i].set_xlabel("Years since 2000")
+        axs[i].set_ylabel("Price Index")
+        axs[i].legend()
+        axs[i].grid(True)
+
+    plt.suptitle("Polynomial Fits to Housing Price Index Data")
+    plt.tight_layout(rect=[0, 0, 1, 0.95])
+    plt.show()
+    
 def plot_ellipse(a, b, c, d, e):
     """Plot an ellipse of the form ax^2 + bx + cxy + dy + ey^2 = 1."""
     theta = np.linspace(0, 2*np.pi, 200)
