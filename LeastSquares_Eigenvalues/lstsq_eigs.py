@@ -96,7 +96,7 @@ def polynomial_fit():
         A = np.vander(x, deg + 1)  # shape (m, deg+1)
         
         # Least squares fit using scipy
-        coeffs, _, _, _ = lstsq(A, y)
+        coeffs, _, _, _ = np.linalg.lstsq(A, y)
 
         # Evaluate the polynomial on refined domain
         A_plot = np.vander(x_plot, deg + 1)
