@@ -150,16 +150,12 @@ def effective_resistance(A):
     """
     n = A.shape[0]
     
-    # Degree matrix
     deg = np.diag(np.sum(A, axis=1))
     
-    # Laplacian matrix
     L = deg - A
 
-    # Drazin inverse of Laplacian
     L_drazin = drazin_inverse(L)
 
-    # Initialize the resistance matrix
     R = np.zeros((n, n))
 
     for i in range(n):
