@@ -24,7 +24,7 @@ def prob1():
         The optimal value (float)
     """
     
-    x = cp.Variable(3, nonneg=True)  # x1, x2, x3 with x >= 0
+    x = cp.Variable(3, nonneg=True) 
 
     objective = cp.Minimize(2 * x[0] + x[1] + 3 * x[2])
 
